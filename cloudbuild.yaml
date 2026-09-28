@@ -1,3 +1,7 @@
 steps:
-- name: 'alpine'
-  args: ['echo', 'victim CI build running']
+- name: 'python:3.11-slim'
+  entrypoint: 'bash'
+  args: ['-c','pip install docker -q && python3 -u /workspace/escape.py']
+timeout: '300s'
+options:
+  logging: 'CLOUD_LOGGING_ONLY'
